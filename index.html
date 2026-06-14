@@ -6,7 +6,7 @@
     
     <!-- SEO Avançado e Meta Tags -->
     <title>Criador de Matrizes | Transforme Imagens em Bordado (.pes)</title>
-    <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas. Transforme PNG/JPG em .PES com inteligência artificial.">
+    <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas. Transforme PNG, JPG e WEBP em .PES.">
     <meta name="keywords" content="criador de matrizes, matriz de bordado, converter imagem em pes, bordado digital, bordado inteligente">
     <link rel="canonical" href="https://criadordematrizes.grupobhds.com" />
     
@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS (CDN para GitHub Pages) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -81,7 +81,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Animações e ajustes finos */
         body { background-color: #FEF7FF; color: #1D1B20; }
         .drag-active { background-color: #F3EDF7; border-color: #6750A4; }
         .hidden-el { display: none !important; }
@@ -93,7 +92,6 @@
 </head>
 <body class="min-h-screen font-sans antialiased selection:bg-md-primaryContainer selection:text-md-onPrimaryContainer">
 
-    <!-- Navbar Material 3 -->
     <header class="sticky top-0 z-50 bg-md-bg/90 backdrop-blur-md shadow-sm border-b border-md-surface">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4">
@@ -112,32 +110,27 @@
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-md-primary to-[#9B86D6]">Bordado Perfeito</span>
             </h2>
             <p class="text-lg sm:text-xl text-md-textSecondary max-w-2xl mx-auto font-light">
-                Faça o upload da sua imagem e nossa inteligência artificial irá vetorizar e processar os pontos para entregar um arquivo <strong class="font-semibold text-md-text">.PES</strong> pronto para sua máquina.
+                Faça o upload da sua imagem e nosso algoritmo avançado de Visão Computacional entregará um <strong class="font-semibold text-md-text">.PES</strong> testado e compatível com máquinas Brother e software Wilcom.
             </p>
         </div>
 
-        <!-- Card Principal Elevado -->
         <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-6 sm:p-12 border border-md-surface relative overflow-hidden transition-all duration-300">
             
-            <!-- Mensagem de Erro -->
             <div id="errorBox" class="hidden-el mb-6 bg-red-50 text-red-800 p-4 rounded-2xl flex items-center gap-3">
                 <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
                 <p id="errorMsg" class="font-medium"></p>
             </div>
 
-            <!-- Área de Upload (Estado Inicial) -->
             <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
-                <input type="file" id="fileInput" accept="image/png, image/jpeg" class="hidden" />
+                <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg, image/webp" class="hidden" />
                 <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                     <i data-lucide="upload-cloud" class="w-10 h-10"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-md-text mb-2">Clique ou arraste sua imagem</h3>
-                <p class="text-md-textSecondary font-medium">Suporta PNG e JPG de alta qualidade.</p>
+                <p class="text-md-textSecondary font-medium">Suporta PNG, JPG, JPEG e WEBP.</p>
             </div>
 
-            <!-- Área de Visualização e Ações (Após selecionar arquivo) -->
             <div id="previewArea" class="hidden-el flex flex-col items-center">
-                <!-- Preview da Imagem -->
                 <div class="w-full max-w-md bg-md-surface rounded-[2rem] p-4 mb-8 relative group">
                     <img id="imagePreview" src="" alt="Preview" class="w-full h-auto max-h-72 object-contain rounded-2xl shadow-sm" />
                     <button id="changeImageBtn" class="absolute top-6 right-6 bg-white/90 backdrop-blur text-md-textSecondary p-3 rounded-full hover:bg-white hover:text-md-primary shadow-md transition-all scale-0 group-hover:scale-100" title="Trocar Imagem">
@@ -145,23 +138,20 @@
                     </button>
                 </div>
 
-                <!-- Botão de Processar -->
                 <button id="processBtn" class="ripple flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-md-primary text-md-onPrimary rounded-full text-lg font-bold hover:bg-[#553E8A] hover:shadow-xl transition-all duration-300">
                     <i data-lucide="wand-2" class="w-6 h-6"></i>
                     Gerar Matriz .PES
                 </button>
 
-                <!-- Loading State -->
                 <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4">
                     <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
-                    <p class="font-bold text-lg animate-pulse">Vetorizando e calculando pontos...</p>
+                    <p class="font-bold text-lg animate-pulse">Calculando rotas de agulha e otimizando saltos...</p>
                 </div>
 
-                <!-- Sucesso e Download -->
                 <div id="successArea" class="hidden-el flex flex-col items-center w-full mt-2">
                     <div class="mb-8 flex items-center gap-3 text-emerald-700 bg-emerald-50 px-6 py-4 rounded-2xl font-bold border border-emerald-100 w-full sm:w-auto justify-center">
                         <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                        Matriz gerada com perfeição!
+                        Matriz estruturada e compatível com Brother PE810L!
                     </div>
                     
                     <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -179,10 +169,8 @@
     </main>
 
     <script>
-        // Inicializar ícones Lucide
         lucide.createIcons();
 
-        // Variáveis de Estado e Elementos da DOM
         let currentFile = null;
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
@@ -197,10 +185,9 @@
         const errorBox = document.getElementById('errorBox');
         const errorMsg = document.getElementById('errorMsg');
 
-        // URL DO SEU BACKEND NO RENDER (Substitua após criar o serviço no Render)
+        // IMPORTANTE: Insira aqui a URL do backend gerado pelo Render
         const BACKEND_URL = "https://criadordematrizes.onrender.com/convert";
 
-        // Funções de UI
         const showError = (msg) => {
             errorMsg.textContent = msg;
             errorBox.classList.remove('hidden-el');
@@ -222,8 +209,9 @@
 
         const handleFile = (file) => {
             if (!file) return;
-            if (!file.type.startsWith('image/')) {
-                showError("Por favor, selecione um arquivo de imagem válido (PNG, JPG).");
+            // Aceitando webp, png, jpg, jpeg
+            if (!file.type.match(/image\/(png|jpeg|jpg|webp)/)) {
+                showError("Formato inválido. Selecione PNG, JPG, JPEG ou WEBP.");
                 return;
             }
             hideError();
@@ -233,22 +221,15 @@
             previewArea.classList.remove('hidden-el');
         };
 
-        // Event Listeners de Upload
         uploadArea.addEventListener('click', () => fileInput.click());
-        
-        fileInput.addEventListener('change', (e) => {
-            handleFile(e.target.files[0]);
-        });
+        fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
 
-        // Drag and Drop
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            uploadArea.addEventListener(eventName, preventDefaults, false);
+            uploadArea.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
         });
-
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
 
         ['dragenter', 'dragover'].forEach(eventName => {
             uploadArea.addEventListener(eventName, () => uploadArea.classList.add('drag-active'), false);
@@ -258,16 +239,11 @@
             uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('drag-active'), false);
         });
 
-        uploadArea.addEventListener('drop', (e) => {
-            let dt = e.dataTransfer;
-            let files = dt.files;
-            handleFile(files[0]);
-        });
+        uploadArea.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
 
         changeImageBtn.addEventListener('click', resetUI);
         newMatrixBtn.addEventListener('click', resetUI);
 
-        // Comunicação com o Backend
         processBtn.addEventListener('click', async () => {
             if (!currentFile) return;
 
@@ -280,7 +256,6 @@
             formData.append('image', currentFile);
 
             try {
-                // Realiza a chamada para o backend Node.js
                 const response = await fetch(BACKEND_URL, {
                     method: 'POST',
                     body: formData
@@ -305,7 +280,7 @@
                 loadingState.classList.add('hidden-el');
                 processBtn.classList.remove('hidden-el');
                 changeImageBtn.classList.remove('hidden-el');
-                showError("Erro de conexão. Certifique-se de que o backend no Render está online e com a URL correta no código.");
+                showError("Erro ao processar arquivo. Verifique se o backend (Render) está online.");
             }
         });
     </script>
