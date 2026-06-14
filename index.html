@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Avançado e Meta Tags -->
+    <title>Criador de Matrizes | Transforme Imagens em Bordado (.pes)</title>
+    <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas. Transforme PNG/JPG em .PES com inteligência artificial.">
+    <meta name="keywords" content="criador de matrizes, matriz de bordado, converter imagem em pes, bordado digital, bordado inteligente">
+    <link rel="canonical" href="https://criadordematrizes.grupobhds.com" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://criadordematrizes.grupobhds.com">
+    <meta property="og:title" content="Criador de Matrizes | Transforme Imagens em Bordado (.pes)">
+    <meta property="og:description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas.">
+    <meta property="og:image" content="https://criadordematrizes.grupobhds.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://criadordematrizes.grupobhds.com">
+    <meta name="twitter:title" content="Criador de Matrizes | Transforme Imagens em Bordado (.pes)">
+    <meta name="twitter:description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas.">
+    <meta name="twitter:image" content="https://criadordematrizes.grupobhds.com/twitter-image.jpg">
+
+    <!-- Favicon dinâmico em SVG -->
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🧵</text></svg>'>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Criador de Matrizes",
+      "url": "https://criadordematrizes.grupobhds.com",
+      "description": "Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "BRL"
+      }
+    }
+    </script>
+
+    <!-- Fonte Moderna: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN para GitHub Pages) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        md: {
+                            bg: '#FEF7FF',
+                            surface: '#F3EDF7',
+                            primary: '#6750A4',
+                            onPrimary: '#FFFFFF',
+                            primaryContainer: '#EADDFF',
+                            onPrimaryContainer: '#21005D',
+                            text: '#1D1B20',
+                            textSecondary: '#49454F',
+                            border: '#CAC4D0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Animações e ajustes finos */
+        body { background-color: #FEF7FF; color: #1D1B20; }
+        .drag-active { background-color: #F3EDF7; border-color: #6750A4; }
+        .hidden-el { display: none !important; }
+        .loader { border-top-color: #6750A4; animation: spinner 0.8s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .ripple { transition: transform 0.1s, box-shadow 0.1s; }
+        .ripple:active { transform: scale(0.97); }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased selection:bg-md-primaryContainer selection:text-md-onPrimaryContainer">
+
+    <!-- Navbar Material 3 -->
+    <header class="sticky top-0 z-50 bg-md-bg/90 backdrop-blur-md shadow-sm border-b border-md-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-md-primaryContainer rounded-2xl flex items-center justify-center text-md-onPrimaryContainer rotate-3 hover:rotate-0 transition-transform">
+                    <i data-lucide="sparkles" class="w-6 h-6 animate-pulse"></i>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-md-text">Criador de Matrizes</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div class="text-center mb-12 animate-fade-in-up">
+            <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
+                Transforme Imagens em <br class="hidden sm:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-md-primary to-[#9B86D6]">Bordado Perfeito</span>
+            </h2>
+            <p class="text-lg sm:text-xl text-md-textSecondary max-w-2xl mx-auto font-light">
+                Faça o upload da sua imagem e nossa inteligência artificial irá vetorizar e processar os pontos para entregar um arquivo <strong class="font-semibold text-md-text">.PES</strong> pronto para sua máquina.
+            </p>
+        </div>
+
+        <!-- Card Principal Elevado -->
+        <div class="bg-white rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] p-6 sm:p-12 border border-md-surface relative overflow-hidden transition-all duration-300">
+            
+            <!-- Mensagem de Erro -->
+            <div id="errorBox" class="hidden-el mb-6 bg-red-50 text-red-800 p-4 rounded-2xl flex items-center gap-3">
+                <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+                <p id="errorMsg" class="font-medium"></p>
+            </div>
+
+            <!-- Área de Upload (Estado Inicial) -->
+            <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
+                <input type="file" id="fileInput" accept="image/png, image/jpeg" class="hidden" />
+                <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <i data-lucide="upload-cloud" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-md-text mb-2">Clique ou arraste sua imagem</h3>
+                <p class="text-md-textSecondary font-medium">Suporta PNG e JPG de alta qualidade.</p>
+            </div>
+
+            <!-- Área de Visualização e Ações (Após selecionar arquivo) -->
+            <div id="previewArea" class="hidden-el flex flex-col items-center">
+                <!-- Preview da Imagem -->
+                <div class="w-full max-w-md bg-md-surface rounded-[2rem] p-4 mb-8 relative group">
+                    <img id="imagePreview" src="" alt="Preview" class="w-full h-auto max-h-72 object-contain rounded-2xl shadow-sm" />
+                    <button id="changeImageBtn" class="absolute top-6 right-6 bg-white/90 backdrop-blur text-md-textSecondary p-3 rounded-full hover:bg-white hover:text-md-primary shadow-md transition-all scale-0 group-hover:scale-100" title="Trocar Imagem">
+                        <i data-lucide="image" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Botão de Processar -->
+                <button id="processBtn" class="ripple flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-md-primary text-md-onPrimary rounded-full text-lg font-bold hover:bg-[#553E8A] hover:shadow-xl transition-all duration-300">
+                    <i data-lucide="wand-2" class="w-6 h-6"></i>
+                    Gerar Matriz .PES
+                </button>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4">
+                    <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
+                    <p class="font-bold text-lg animate-pulse">Vetorizando e calculando pontos...</p>
+                </div>
+
+                <!-- Sucesso e Download -->
+                <div id="successArea" class="hidden-el flex flex-col items-center w-full mt-2">
+                    <div class="mb-8 flex items-center gap-3 text-emerald-700 bg-emerald-50 px-6 py-4 rounded-2xl font-bold border border-emerald-100 w-full sm:w-auto justify-center">
+                        <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                        Matriz gerada com perfeição!
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <a id="downloadBtn" href="#" download="matriz_gerada.pes" class="ripple flex items-center justify-center gap-3 px-8 py-4 bg-md-primary text-md-onPrimary rounded-full text-lg font-bold hover:bg-[#553E8A] shadow-lg transition-all">
+                            <i data-lucide="download" class="w-6 h-6"></i>
+                            Baixar Arquivo .PES
+                        </a>
+                        <button id="newMatrixBtn" class="ripple flex items-center justify-center gap-3 px-8 py-4 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full text-lg font-bold hover:bg-[#D0BCFF] transition-all">
+                            Criar Nova Matriz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Variáveis de Estado e Elementos da DOM
+        let currentFile = null;
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewArea = document.getElementById('previewArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const changeImageBtn = document.getElementById('changeImageBtn');
+        const processBtn = document.getElementById('processBtn');
+        const loadingState = document.getElementById('loadingState');
+        const successArea = document.getElementById('successArea');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const newMatrixBtn = document.getElementById('newMatrixBtn');
+        const errorBox = document.getElementById('errorBox');
+        const errorMsg = document.getElementById('errorMsg');
+
+        // URL DO SEU BACKEND NO RENDER (Substitua após criar o serviço no Render)
+        const BACKEND_URL = "https://criadordematrizes.onrender.com/convert";
+
+        // Funções de UI
+        const showError = (msg) => {
+            errorMsg.textContent = msg;
+            errorBox.classList.remove('hidden-el');
+        };
+        const hideError = () => errorBox.classList.add('hidden-el');
+
+        const resetUI = () => {
+            currentFile = null;
+            fileInput.value = "";
+            imagePreview.src = "";
+            hideError();
+            previewArea.classList.add('hidden-el');
+            successArea.classList.add('hidden-el');
+            processBtn.classList.remove('hidden-el');
+            loadingState.classList.add('hidden-el');
+            uploadArea.classList.remove('hidden-el');
+            changeImageBtn.classList.remove('hidden-el');
+        };
+
+        const handleFile = (file) => {
+            if (!file) return;
+            if (!file.type.startsWith('image/')) {
+                showError("Por favor, selecione um arquivo de imagem válido (PNG, JPG).");
+                return;
+            }
+            hideError();
+            currentFile = file;
+            imagePreview.src = URL.createObjectURL(file);
+            uploadArea.classList.add('hidden-el');
+            previewArea.classList.remove('hidden-el');
+        };
+
+        // Event Listeners de Upload
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+        });
+
+        // Drag and Drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.add('drag-active'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('drag-active'), false);
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            handleFile(files[0]);
+        });
+
+        changeImageBtn.addEventListener('click', resetUI);
+        newMatrixBtn.addEventListener('click', resetUI);
+
+        // Comunicação com o Backend
+        processBtn.addEventListener('click', async () => {
+            if (!currentFile) return;
+
+            hideError();
+            processBtn.classList.add('hidden-el');
+            changeImageBtn.classList.add('hidden-el');
+            loadingState.classList.remove('hidden-el');
+
+            const formData = new FormData();
+            formData.append('image', currentFile);
+
+            try {
+                // Realiza a chamada para o backend Node.js
+                const response = await fetch(BACKEND_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error("Falha no servidor ao processar a matriz.");
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                
+                downloadBtn.href = url;
+                const originalName = currentFile.name.split('.')[0];
+                downloadBtn.download = `matriz_${originalName}.pes`;
+
+                loadingState.classList.add('hidden-el');
+                successArea.classList.remove('hidden-el');
+
+            } catch (err) {
+                console.error(err);
+                loadingState.classList.add('hidden-el');
+                processBtn.classList.remove('hidden-el');
+                changeImageBtn.classList.remove('hidden-el');
+                showError("Erro de conexão. Certifique-se de que o backend no Render está online e com a URL correta no código.");
+            }
+        });
+    </script>
+</body>
+</html>
