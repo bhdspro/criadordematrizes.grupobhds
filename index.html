@@ -6,7 +6,7 @@
     
     <!-- SEO Avançado e Meta Tags -->
     <title>Criador de Matrizes | Transforme Imagens em Bordado (.pes)</title>
-    <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas. Transforme PNG, JPG e WEBP em .PES.">
+    <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado perfeitas. Transforme PNG e WEBP em .PES.">
     <meta name="keywords" content="criador de matrizes, matriz de bordado, converter imagem em pes, bordado digital, bordado inteligente">
     <link rel="canonical" href="https://criadordematrizes.grupobhds.com" />
     
@@ -122,12 +122,13 @@
             </div>
 
             <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
-                <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg, image/webp" class="hidden" />
+                <!-- Modificado para aceitar APENAS PNG e WEBP -->
+                <input type="file" id="fileInput" accept="image/png, image/webp" class="hidden" />
                 <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                     <i data-lucide="upload-cloud" class="w-10 h-10"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-md-text mb-2">Clique ou arraste sua imagem</h3>
-                <p class="text-md-textSecondary font-medium">Suporta PNG, JPG, JPEG e WEBP.</p>
+                <p class="text-md-textSecondary font-medium">Suporta apenas PNG e WEBP com transparência.</p>
             </div>
 
             <div id="previewArea" class="hidden-el flex flex-col items-center">
@@ -145,7 +146,7 @@
 
                 <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4">
                     <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
-                    <p class="font-bold text-lg animate-pulse">Calculando rotas de agulha e otimizando saltos...</p>
+                    <p class="font-bold text-lg animate-pulse">Vetorizando cores, detectando áreas brancas e otimizando saltos...</p>
                 </div>
 
                 <div id="successArea" class="hidden-el flex flex-col items-center w-full mt-2">
@@ -209,9 +210,9 @@
 
         const handleFile = (file) => {
             if (!file) return;
-            // Aceitando webp, png, jpg, jpeg
-            if (!file.type.match(/image\/(png|jpeg|jpg|webp)/)) {
-                showError("Formato inválido. Selecione PNG, JPG, JPEG ou WEBP.");
+            // Modificado para aceitar APENAS PNG e WEBP
+            if (!file.type.match(/image\/(png|webp)/)) {
+                showError("Formato inválido. Por favor, selecione apenas imagens PNG ou WEBP.");
                 return;
             }
             hideError();
