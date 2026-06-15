@@ -122,7 +122,6 @@
             </div>
 
             <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
-                <!-- Modificado para aceitar APENAS PNG e WEBP -->
                 <input type="file" id="fileInput" accept="image/png, image/webp" class="hidden" />
                 <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                     <i data-lucide="upload-cloud" class="w-10 h-10"></i>
@@ -210,7 +209,6 @@
 
         const handleFile = (file) => {
             if (!file) return;
-            // Modificado para aceitar APENAS PNG e WEBP
             if (!file.type.match(/image\/(png|webp)/)) {
                 showError("Formato inválido. Por favor, selecione apenas imagens PNG ou WEBP.");
                 return;
