@@ -122,6 +122,7 @@
             </div>
 
             <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
+                <!-- Aceitando APENAS PNG e WEBP -->
                 <input type="file" id="fileInput" accept="image/png, image/webp" class="hidden" />
                 <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                     <i data-lucide="upload-cloud" class="w-10 h-10"></i>
@@ -145,7 +146,7 @@
 
                 <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4">
                     <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
-                    <p class="font-bold text-lg animate-pulse">Preenchendo formas (Tatami), otimizando salto e centralizando...</p>
+                    <p class="font-bold text-lg animate-pulse">Rastreando laterais e gerando bordado sem cortes...</p>
                 </div>
 
                 <div id="successArea" class="hidden-el flex flex-col items-center w-full mt-2">
