@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criador de Matrizes | Transforme Imagens em Bordado (.pes)</title>
     <meta name="description" content="Plataforma avançada para conversão de imagens em matrizes de bordado com IA. Transforme PNG e WEBP em .PES.">
-    <meta name="keywords" content="criador de matrizes, matriz de bordado, converter imagem em pes, bordado digital, IA">
     <link rel="canonical" href="https://criadordematrizes.grupobhds.com" />
     
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://criadordematrizes.grupobhds.com">
-    <meta property="og:title" content="Criador de Matrizes | Transforme Imagens em Bordado (.pes)">
-    <meta property="og:description" content="Plataforma avançada para conversão de imagens em matrizes de bordado com IA.">
-    
     <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🧵</text></svg>'>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -36,7 +28,6 @@
             }
         }
     </script>
-
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -60,17 +51,20 @@
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-md-text">Criador de Matrizes</h1>
             </div>
+            <div id="creditBadge" class="hidden-el bg-md-primaryContainer text-md-onPrimaryContainer px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2">
+                <i data-lucide="coins" class="w-4 h-4"></i> ID Ativo
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20 relative">
         <div class="text-center mb-12 animate-fade-in-up">
             <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
                 Transforme Imagens em <br class="hidden sm:block"/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-md-primary to-[#9B86D6]">Bordado Perfeito</span>
             </h2>
             <p class="text-lg sm:text-xl text-md-textSecondary max-w-2xl mx-auto font-light">
-                Nossa IA e algoritmos processam a densidade, removem o fundo externo, criam underlay e garantem segurança de <strong>9.8 x 11.5 cm</strong>.
+                Otimização inteligente, preenchimento e segurança de <strong>9.8 x 11.5 cm</strong>.
             </p>
         </div>
 
@@ -81,6 +75,7 @@
                 <p id="errorMsg" class="font-medium"></p>
             </div>
 
+            <!-- Área de Upload -->
             <div id="uploadArea" class="border-2 border-dashed border-md-border rounded-[2rem] p-12 flex flex-col items-center justify-center text-center cursor-pointer transition-colors duration-300 hover:bg-md-surface group">
                 <input type="file" id="fileInput" accept="image/png, image/webp" class="hidden" />
                 <div class="w-24 h-24 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
@@ -90,6 +85,7 @@
                 <p class="text-md-textSecondary font-medium">Suporta apenas PNG e WEBP com transparência.</p>
             </div>
 
+            <!-- Preview e Configurações -->
             <div id="previewArea" class="hidden-el flex flex-col items-center w-full">
                 <div class="w-full max-w-md bg-md-surface rounded-[2rem] p-4 mb-8 relative group">
                     <img id="imagePreview" src="" alt="Preview" class="w-full h-auto max-h-72 object-contain rounded-2xl shadow-sm" />
@@ -103,39 +99,16 @@
                         <i data-lucide="settings-2" class="w-5 h-5 text-md-primary"></i> 
                         Configurações da Matriz
                     </h3>
-                    
                     <div class="mb-6">
                         <label class="block text-sm font-semibold text-md-textSecondary mb-3">Densidade dos Pontos (Tatami)</label>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <div>
-                                <input type="radio" name="density" id="den_leve" value="leve" class="hidden" />
-                                <label for="den_leve" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full">
-                                    <span class="font-bold">Leve</span>
-                                    <span class="text-xs mt-1 text-md-textSecondary opacity-80">Malha fina, T-Shirts</span>
-                                </label>
-                            </div>
-                            <div>
-                                <input type="radio" name="density" id="den_normal" value="normal" class="hidden" checked />
-                                <label for="den_normal" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full">
-                                    <span class="font-bold">Normal</span>
-                                    <span class="text-xs mt-1 text-md-textSecondary opacity-80">Polo, Oxford, Jeans</span>
-                                </label>
-                            </div>
-                            <div>
-                                <input type="radio" name="density" id="den_denso" value="denso" class="hidden" />
-                                <label for="den_denso" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full">
-                                    <span class="font-bold">Denso</span>
-                                    <span class="text-xs mt-1 text-md-textSecondary opacity-80">Toalhas, Bonés</span>
-                                </label>
-                            </div>
+                            <div><input type="radio" name="density" id="den_leve" value="leve" class="hidden" /><label for="den_leve" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full"><span class="font-bold">Leve</span><span class="text-xs mt-1 text-md-textSecondary opacity-80">Malha fina, T-Shirts</span></label></div>
+                            <div><input type="radio" name="density" id="den_normal" value="normal" class="hidden" checked /><label for="den_normal" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full"><span class="font-bold">Normal</span><span class="text-xs mt-1 text-md-textSecondary opacity-80">Polo, Oxford, Jeans</span></label></div>
+                            <div><input type="radio" name="density" id="den_denso" value="denso" class="hidden" /><label for="den_denso" class="cursor-pointer flex flex-col p-3 border-2 border-md-surface rounded-xl hover:bg-md-surface transition-all text-center h-full"><span class="font-bold">Denso</span><span class="text-xs mt-1 text-md-textSecondary opacity-80">Toalhas, Bonés</span></label></div>
                         </div>
                     </div>
-
                     <div class="flex items-center justify-between p-4 bg-md-surface rounded-xl">
-                        <div>
-                            <span class="block font-bold text-md-text text-sm">Remover Fundo Branco Externo</span>
-                            <span class="text-xs text-md-textSecondary">Apaga o branco em volta, preservando os detalhes brancos de dentro.</span>
-                        </div>
+                        <div><span class="block font-bold text-md-text text-sm">Remover Fundo Branco Externo</span></div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" id="removeBg" class="sr-only peer" checked>
                             <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-md-primary"></div>
@@ -144,33 +117,25 @@
                 </div>
 
                 <button id="processBtn" class="ripple flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 bg-md-primary text-md-onPrimary rounded-full text-lg font-bold hover:bg-[#553E8A] hover:shadow-xl transition-all duration-300">
-                    <i data-lucide="wand-2" class="w-6 h-6"></i>
-                    Gerar Matriz .PES
+                    <i data-lucide="wand-2" class="w-6 h-6"></i> Gerar Matriz .PES
                 </button>
 
                 <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4 w-full">
                     <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
-                    <p class="font-bold text-lg animate-pulse text-center">Calculando rotas de agulha...</p>
-                    
-                    <!-- Painel de Dicas da IA -->
+                    <p id="loadingText" class="font-bold text-lg animate-pulse text-center">Processando pagamento e matriz...</p>
                     <div id="aiAnalysisBox" class="hidden-el mt-4 w-full max-w-xl bg-[#F0FDF4] border border-[#BBF7D0] p-5 rounded-2xl">
-                        <h4 class="font-bold text-[#166534] flex items-center gap-2 mb-2">
-                            <i data-lucide="bot" class="w-5 h-5"></i> Dica do Gemini AI:
-                        </h4>
+                        <h4 class="font-bold text-[#166534] flex items-center gap-2 mb-2"><i data-lucide="bot" class="w-5 h-5"></i> Dica do Gemini AI:</h4>
                         <p id="aiAnalysisText" class="text-sm text-[#15803D] leading-relaxed"></p>
                     </div>
                 </div>
 
                 <div id="successArea" class="hidden-el flex flex-col items-center w-full mt-2">
                     <div class="mb-8 flex items-center gap-3 text-emerald-700 bg-emerald-50 px-6 py-4 rounded-2xl font-bold border border-emerald-100 w-full sm:w-auto justify-center">
-                        <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                        Matriz Premium Gerada com Sucesso!
+                        <i data-lucide="check-circle-2" class="w-6 h-6"></i> Matriz gerada e enviada ao WhatsApp!
                     </div>
-                    
                     <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         <a id="downloadBtn" href="#" download="matriz_gerada.pes" class="ripple flex items-center justify-center gap-3 px-8 py-4 bg-md-primary text-md-onPrimary rounded-full text-lg font-bold hover:bg-[#553E8A] shadow-lg transition-all">
-                            <i data-lucide="download" class="w-6 h-6"></i>
-                            Baixar Arquivo .PES
+                            <i data-lucide="download" class="w-6 h-6"></i> Baixar Arquivo .PES
                         </a>
                         <button id="newMatrixBtn" class="ripple flex items-center justify-center gap-3 px-8 py-4 bg-md-primaryContainer text-md-onPrimaryContainer rounded-full text-lg font-bold hover:bg-[#D0BCFF] transition-all">
                             Criar Nova Matriz
@@ -181,10 +146,50 @@
         </div>
     </main>
 
+    <!-- MODAL DE PIX -->
+    <div id="pixModal" class="hidden-el fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] shadow-2xl w-full max-w-md p-8 relative flex flex-col items-center text-center">
+            <button id="closePixModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="w-16 h-16 bg-[#E0F2FE] text-[#0284C7] rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="qr-code" class="w-8 h-8"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Geração Avulsa</h2>
+            <p class="text-gray-600 mb-6">Pague via Pix para gerar e receber sua matriz no WhatsApp.</p>
+            <div class="bg-gray-100 p-4 rounded-2xl w-full mb-4">
+                <img id="pixQrCodeImg" src="" alt="QR Code Pix" class="mx-auto w-48 h-48 mix-blend-multiply mb-2" />
+                <p class="font-bold text-lg text-gray-800">R$ 5,00</p>
+            </div>
+            <button id="copyPixBtn" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#0284C7] text-white rounded-xl font-bold hover:bg-[#0369A1] transition-colors">
+                <i data-lucide="copy" class="w-5 h-5"></i> Copiar Código Pix
+            </button>
+            <p id="pixStatus" class="mt-4 text-sm font-semibold text-amber-600 animate-pulse">Aguardando pagamento...</p>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
 
+        // IMPORTANTE: URL do Render
+        const BACKEND_URL = "https://criadordematrizes.onrender.com";
+
+        // LÓGICA DO ID E LOCALSTORAGE
+        const urlParams = new URLSearchParams(window.location.search);
+        let userId = urlParams.get('id');
+        if (userId) {
+            localStorage.setItem('bhds_user_id', userId);
+            window.history.replaceState({}, document.title, window.location.pathname); // Limpa da URL
+        } else {
+            userId = localStorage.getItem('bhds_user_id');
+        }
+
+        if (userId) {
+            document.getElementById('creditBadge').classList.remove('hidden-el');
+        }
+
         let currentFile = null;
+        let pixPaymentId = null;
+        let pixInterval = null;
+
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const previewArea = document.getElementById('previewArea');
@@ -198,69 +203,131 @@
         const newMatrixBtn = document.getElementById('newMatrixBtn');
         const errorBox = document.getElementById('errorBox');
         const errorMsg = document.getElementById('errorMsg');
-        
-        const aiAnalysisBox = document.getElementById('aiAnalysisBox');
-        const aiAnalysisText = document.getElementById('aiAnalysisText');
+        const pixModal = document.getElementById('pixModal');
 
-        // IMPORTANTE: Insira aqui a URL do backend gerado pelo Render
-        const BACKEND_URL = "https://criadordematrizes.onrender.com";
-
-        const showError = (msg) => {
-            errorMsg.textContent = msg;
-            errorBox.classList.remove('hidden-el');
-        };
+        const showError = (msg) => { errorMsg.textContent = msg; errorBox.classList.remove('hidden-el'); };
         const hideError = () => errorBox.classList.add('hidden-el');
 
         const resetUI = () => {
-            currentFile = null;
-            fileInput.value = "";
-            imagePreview.src = "";
-            hideError();
-            previewArea.classList.add('hidden-el');
-            successArea.classList.add('hidden-el');
-            advancedOptions.classList.remove('hidden-el');
-            processBtn.classList.remove('hidden-el');
-            loadingState.classList.add('hidden-el');
-            uploadArea.classList.remove('hidden-el');
-            changeImageBtn.classList.remove('hidden-el');
-            aiAnalysisBox.classList.add('hidden-el');
+            currentFile = null; fileInput.value = ""; imagePreview.src = ""; hideError();
+            previewArea.classList.add('hidden-el'); successArea.classList.add('hidden-el');
+            advancedOptions.classList.remove('hidden-el'); processBtn.classList.remove('hidden-el');
+            loadingState.classList.add('hidden-el'); uploadArea.classList.remove('hidden-el');
+            document.getElementById('aiAnalysisBox').classList.add('hidden-el');
         };
 
         const handleFile = (file) => {
             if (!file) return;
-            if (!file.type.match(/image\/(png|webp)/)) {
-                showError("Formato inválido. Por favor, selecione apenas imagens PNG ou WEBP.");
-                return;
-            }
-            hideError();
-            currentFile = file;
-            imagePreview.src = URL.createObjectURL(file);
-            uploadArea.classList.add('hidden-el');
-            previewArea.classList.remove('hidden-el');
+            if (!file.type.match(/image\/(png|webp)/)) { showError("Selecione PNG ou WEBP."); return; }
+            hideError(); currentFile = file; imagePreview.src = URL.createObjectURL(file);
+            uploadArea.classList.add('hidden-el'); previewArea.classList.remove('hidden-el');
         };
 
         uploadArea.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            uploadArea.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
-        });
-        ['dragenter', 'dragover'].forEach(eventName => uploadArea.addEventListener(eventName, () => uploadArea.classList.add('drag-active'), false));
-        ['dragleave', 'drop'].forEach(eventName => uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('drag-active'), false));
-        uploadArea.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+        uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('drag-active'); });
+        uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-active'));
+        uploadArea.addEventListener('drop', (e) => { e.preventDefault(); handleFile(e.dataTransfer.files[0]); });
 
         changeImageBtn.addEventListener('click', resetUI);
         newMatrixBtn.addEventListener('click', resetUI);
 
+        // BOTÃO GERAR MATRIZ
         processBtn.addEventListener('click', async () => {
             if (!currentFile) return;
-
             hideError();
+            processBtn.innerHTML = `<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> Verificando...`;
+            processBtn.disabled = true;
+
+            try {
+                // Checa Créditos
+                let hasCredit = false;
+                if (userId) {
+                    const checkRes = await fetch(`${BACKEND_URL}/check-credits`, {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: userId })
+                    });
+                    const checkData = await checkRes.json();
+                    if (checkData.success && checkData.hasCredit) {
+                        hasCredit = true;
+                    }
+                }
+
+                if (hasCredit) {
+                    // Tem crédito, gera direto
+                    startGenerationProcess();
+                } else {
+                    // Sem ID ou sem crédito: Abre Pix
+                    processBtn.innerHTML = `<i data-lucide="wand-2" class="w-6 h-6"></i> Gerar Matriz .PES`;
+                    processBtn.disabled = false;
+                    openPixModal();
+                }
+            } catch (err) {
+                console.error(err);
+                showError("Erro de comunicação com o servidor.");
+                processBtn.innerHTML = `<i data-lucide="wand-2" class="w-6 h-6"></i> Gerar Matriz .PES`;
+                processBtn.disabled = false;
+            }
+        });
+
+        // MODAL E PIX
+        let pixPayload = "";
+        async function openPixModal() {
+            try {
+                document.getElementById('pixStatus').textContent = "Gerando Pix...";
+                pixModal.classList.remove('hidden-el');
+                const res = await fetch(`${BACKEND_URL}/create-payment`, { method: 'POST' });
+                const data = await res.json();
+                
+                if(!data.success) throw new Error("Erro Asaas");
+                
+                document.getElementById('pixQrCodeImg').src = `data:image/jpeg;base64,${data.encodedImage}`;
+                pixPayload = data.payload;
+                pixPaymentId = data.paymentId;
+                document.getElementById('pixStatus').textContent = "Aguardando pagamento...";
+
+                // Inicia verificação do Pix a cada 3 segundos
+                pixInterval = setInterval(checkPaymentStatus, 3000);
+            } catch(e) {
+                alert("Erro ao gerar Pix.");
+                closePixModalFunc();
+            }
+        }
+
+        const closePixModalFunc = () => {
+            pixModal.classList.add('hidden-el');
+            clearInterval(pixInterval);
+        };
+        document.getElementById('closePixModal').addEventListener('click', closePixModalFunc);
+
+        document.getElementById('copyPixBtn').addEventListener('click', () => {
+            navigator.clipboard.writeText(pixPayload).then(() => alert("Código Copiado!"));
+        });
+
+        async function checkPaymentStatus() {
+            if(!pixPaymentId) return;
+            try {
+                const res = await fetch(`${BACKEND_URL}/check-payment?paymentId=${pixPaymentId}`);
+                const data = await res.json();
+                if(data.status === 'RECEIVED' || data.status === 'CONFIRMED') {
+                    clearInterval(pixInterval);
+                    document.getElementById('pixStatus').textContent = "Pagamento Confirmado! Gerando...";
+                    document.getElementById('pixStatus').classList.replace('text-amber-600', 'text-green-600');
+                    setTimeout(() => {
+                        closePixModalFunc();
+                        startGenerationProcess(pixPaymentId);
+                    }, 1500);
+                }
+            } catch(e) {}
+        }
+
+        // PROCESSO DE GERAÇÃO
+        function startGenerationProcess(paidPixId = null) {
             processBtn.classList.add('hidden-el');
-            changeImageBtn.classList.add('hidden-el');
             advancedOptions.classList.add('hidden-el');
             loadingState.classList.remove('hidden-el');
-            aiAnalysisBox.classList.add('hidden-el');
-
+            document.getElementById('loadingText').textContent = "Gerando matriz e enviando para WhatsApp...";
+            
             const density = document.querySelector('input[name="density"]:checked').value;
             const removeBg = document.getElementById('removeBg').checked;
 
@@ -268,45 +335,39 @@
             formData.append('image', currentFile);
             formData.append('density', density);
             formData.append('remove_bg', removeBg);
+            if (userId && !paidPixId) formData.append('user_id', userId); // Usa crédito
+            if (paidPixId) formData.append('paid_pix_id', paidPixId); // Usa pagamento avulso
 
-            // Chamada Assíncrona Paralela para a IA do Gemini
+            // Análise Gemini Assíncrona
             fetch(`${BACKEND_URL}/analyze`, { method: 'POST', body: formData })
                 .then(res => res.json())
                 .then(data => {
-                    if(data.analysis && data.analysis !== "") {
-                        aiAnalysisText.textContent = data.analysis;
-                        aiAnalysisBox.classList.remove('hidden-el');
+                    if(data.analysis) {
+                        document.getElementById('aiAnalysisText').textContent = data.analysis;
+                        document.getElementById('aiAnalysisBox').classList.remove('hidden-el');
                     }
-                }).catch(err => console.log("IA não respondeu a tempo."));
+                }).catch(() => {});
 
-            // Chamada Principal para Conversão de Matriz
-            try {
-                const response = await fetch(`${BACKEND_URL}/convert`, {
-                    method: 'POST',
-                    body: formData
+            // Geração Real
+            fetch(`${BACKEND_URL}/convert`, { method: 'POST', body: formData })
+                .then(async (response) => {
+                    if (!response.ok) throw new Error("Falha no backend");
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    downloadBtn.href = url;
+                    downloadBtn.download = `matriz_${currentFile.name.split('.')[0]}_${density}.pes`;
+                    loadingState.classList.add('hidden-el');
+                    successArea.classList.remove('hidden-el');
+                })
+                .catch(err => {
+                    loadingState.classList.add('hidden-el');
+                    processBtn.classList.remove('hidden-el');
+                    advancedOptions.classList.remove('hidden-el');
+                    showError("Erro ao processar matriz. Tente novamente.");
+                    processBtn.innerHTML = `<i data-lucide="wand-2" class="w-6 h-6"></i> Gerar Matriz .PES`;
+                    processBtn.disabled = false;
                 });
-
-                if (!response.ok) throw new Error("Falha no servidor ao processar a matriz.");
-
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                
-                downloadBtn.href = url;
-                const originalName = currentFile.name.split('.')[0];
-                downloadBtn.download = `matriz_${originalName}_${density}.pes`;
-
-                loadingState.classList.add('hidden-el');
-                successArea.classList.remove('hidden-el');
-
-            } catch (err) {
-                console.error(err);
-                loadingState.classList.add('hidden-el');
-                advancedOptions.classList.remove('hidden-el');
-                processBtn.classList.remove('hidden-el');
-                changeImageBtn.classList.remove('hidden-el');
-                showError("Erro ao processar arquivo. Verifique se o backend está online.");
-            }
-        });
+        }
     </script>
 </body>
 </html>
