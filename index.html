@@ -64,7 +64,7 @@
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-md-primary to-[#9B86D6]">Bordado Perfeito</span>
             </h2>
             <p class="text-lg sm:text-xl text-md-textSecondary max-w-2xl mx-auto font-light">
-                Otimização inteligente, preenchimento e segurança de <strong>9.8 x 11.5 cm</strong>.
+                Dupla verificação ativada: Matriz centralizada e protegida no limite seguro de <strong>12.7 x 13.8 cm</strong>.
             </p>
         </div>
 
@@ -122,7 +122,7 @@
 
                 <div id="loadingState" class="hidden-el flex flex-col items-center text-md-primary gap-4 my-4 w-full">
                     <div class="w-10 h-10 border-4 border-md-primaryContainer rounded-full loader"></div>
-                    <p id="loadingText" class="font-bold text-lg animate-pulse text-center">Processando pagamento e matriz...</p>
+                    <p id="loadingText" class="font-bold text-lg animate-pulse text-center">Aplicando Dupla Verificação de Tamanho...</p>
                     <div id="aiAnalysisBox" class="hidden-el mt-4 w-full max-w-xl bg-[#F0FDF4] border border-[#BBF7D0] p-5 rounded-2xl">
                         <h4 class="font-bold text-[#166534] flex items-center gap-2 mb-2"><i data-lucide="bot" class="w-5 h-5"></i> Dica do Gemini AI:</h4>
                         <p id="aiAnalysisText" class="text-sm text-[#15803D] leading-relaxed"></p>
@@ -177,7 +177,7 @@
         let userId = urlParams.get('id');
         if (userId) {
             localStorage.setItem('bhds_user_id', userId);
-            window.history.replaceState({}, document.title, window.location.pathname); // Limpa da URL
+            window.history.replaceState({}, document.title, window.location.pathname);
         } else {
             userId = localStorage.getItem('bhds_user_id');
         }
@@ -232,7 +232,6 @@
         changeImageBtn.addEventListener('click', resetUI);
         newMatrixBtn.addEventListener('click', resetUI);
 
-        // BOTÃO GERAR MATRIZ
         processBtn.addEventListener('click', async () => {
             if (!currentFile) return;
             hideError();
@@ -240,7 +239,6 @@
             processBtn.disabled = true;
 
             try {
-                // Checa Créditos
                 let hasCredit = false;
                 if (userId) {
                     const checkRes = await fetch(`${BACKEND_URL}/check-credits`, {
@@ -254,10 +252,8 @@
                 }
 
                 if (hasCredit) {
-                    // Tem crédito, gera direto
                     startGenerationProcess();
                 } else {
-                    // Sem ID ou sem crédito: Abre Pix
                     processBtn.innerHTML = `<i data-lucide="wand-2" class="w-6 h-6"></i> Gerar Matriz .PES`;
                     processBtn.disabled = false;
                     openPixModal();
@@ -270,7 +266,6 @@
             }
         });
 
-        // MODAL E PIX
         let pixPayload = "";
         async function openPixModal() {
             try {
@@ -286,7 +281,6 @@
                 pixPaymentId = data.paymentId;
                 document.getElementById('pixStatus').textContent = "Aguardando pagamento...";
 
-                // Inicia verificação do Pix a cada 3 segundos
                 pixInterval = setInterval(checkPaymentStatus, 3000);
             } catch(e) {
                 alert("Erro ao gerar Pix.");
@@ -321,7 +315,6 @@
             } catch(e) {}
         }
 
-        // PROCESSO DE GERAÇÃO
         function startGenerationProcess(paidPixId = null) {
             processBtn.classList.add('hidden-el');
             advancedOptions.classList.add('hidden-el');
@@ -335,10 +328,9 @@
             formData.append('image', currentFile);
             formData.append('density', density);
             formData.append('remove_bg', removeBg);
-            if (userId && !paidPixId) formData.append('user_id', userId); // Usa crédito
-            if (paidPixId) formData.append('paid_pix_id', paidPixId); // Usa pagamento avulso
+            if (userId && !paidPixId) formData.append('user_id', userId); 
+            if (paidPixId) formData.append('paid_pix_id', paidPixId);
 
-            // Análise Gemini Assíncrona
             fetch(`${BACKEND_URL}/analyze`, { method: 'POST', body: formData })
                 .then(res => res.json())
                 .then(data => {
@@ -348,7 +340,6 @@
                     }
                 }).catch(() => {});
 
-            // Geração Real
             fetch(`${BACKEND_URL}/convert`, { method: 'POST', body: formData })
                 .then(async (response) => {
                     if (!response.ok) throw new Error("Falha no backend");
